@@ -1,0 +1,25 @@
+#!/bin/bash
+function ff_function(){
+    if [[ "$1" = "" ]];then     
+        echo "所搜的文字不能为空"
+    else
+        allgrep.sh "mgrep $1"
+        grep_result_to_file.sh
+    fi
+}
+
+
+
+ff_function $1
+
+#这个shell的作用加强mgrep
+
+# - cgrep:     Greps on all local C/C++ files.
+# - ggrep:     Greps on all local Gradle files.
+# - jgrep:     Greps on all local Java files.
+# - resgrep:   Greps on all local res/*.xml files.
+# - mangrep:   Greps on all local AndroidManifest.xml files.
+# - mgrep:     Greps on all local Makefiles files.
+# - sepgrep:   Greps on all local sepolicy files.
+# - sgrep:     Greps on all local source files.
+# - godir:     Go to the directory containing a file.

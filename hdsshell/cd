@@ -1,0 +1,18 @@
+#!/bin/bash
+function myhdscd(){
+    
+    #使用 '\' 可以调用原始命令
+    if [[ "$1" = "" ]];then   
+        #解决cd 不进入home 文件夹问题
+        \cd
+    else
+        \cd "$1"
+    fi
+    
+    source panduan_auto_ss.sh
+    #加上pwd，是为了方便复制当前目录路径
+    pwd
+    ls --color=always
+}
+myhdscd $1
+

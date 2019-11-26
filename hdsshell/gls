@@ -1,0 +1,22 @@
+#!/bin/bash
+if [ "$1" != "" ]; then
+tag="$1"
+else
+echo  "	请输入要查询的关键字："
+read tag
+fi
+
+if [ "$tag" == "" ]; then
+echo "输入关键字不能空"
+else
+# echo  "git log --stat  --grep $tag -i"
+# git log --stat  --grep $tag -i
+echo  "git log  --grep $tag -i"
+git log  --grep $tag -i
+echo  "git log  后git show commit id查看差异"
+fi
+
+
+# 该文件用来查询git log，自动实现忽略大小写
+
+

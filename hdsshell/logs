@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# adb shell am start -n com.mediatek.mtklogger/.MainActivity 
+# (start表示开启，stop表示关闭；23可改为1/2/4/16，分别代表MobileLog/ModemLog/NetworkLog/GPSLog)
+adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name stop --ei cmd_target 23
+echo "adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name stop --ei cmd_target 23"
+# adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name start --ei cmd_target 1
+rm -rf /home/hds/Desktop/pullfile
+echo "rm -rf /home/hds/Desktop/pullfile"
+echo "---------------------------------"
+adb pull /sdcard/mtklog/ /home/hds/Desktop/pullfile

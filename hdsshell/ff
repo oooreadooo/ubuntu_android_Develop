@@ -1,0 +1,26 @@
+#!/bin/bash
+ff_result=$HDSHOME"/hdsjiaohuan/ff_result.txt"
+function ff_function(){
+    grepfile=""
+    if [[ "$2" = "" ]];then     
+        grepfile="."
+    else
+        grepfile="$2"
+    fi
+    if [[ "$1" = "" ]];then     
+        echo "所搜的文字不能为空"
+    else
+        echo "--------------------------------------------stard"
+        grep --color=always -rnH  "$1" "$grepfile" | tee "$ff_result"
+        grep_result_to_file.sh
+    fi
+}
+echo "ff 区分大小写  fff 忽略大小写 ffw 要是一个完整word才显示"
+echo "参数说明,支持2个参数,第一个参数是查询的字符串,第二个参数是要查询的路径,第二参数忽略表示当前目录"
+ff_function $@
+
+#这个shell的作用是把ff 命令搜索到的文件保存在ff_result_filter路径中，方便后面的打开
+# alias ff='grep -r -n'
+# alias fff='grep -r -i -n'
+# alias ffw='grep -r -n -w'   
+# grep -r -n hds | tee $HDSHOME"/hdsjiaohuan/ff_result.txt"

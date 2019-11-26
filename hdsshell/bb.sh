@@ -1,0 +1,1 @@
+cd "$HDS_CURRENT_PATH"
