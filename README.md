@@ -1,0 +1,2 @@
+# ubuntu_android_Develop
+这里主要是分享一些在ubuntu下面开发android 系统的经验，主要是一些工具的使用，加速开发
