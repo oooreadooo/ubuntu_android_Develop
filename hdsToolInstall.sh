@@ -1,7 +1,7 @@
 HDS_temp_CURRENT_PATH=$PWD
 \cd       #进入home
 ishdsDebug="1"   #是否进行debug
-HDS_temp_CURRENT_home_PATH=$PWD
+HDS_temp_CURRENT_home_PATH=$HOME
 hdsjiaohuan_dir=$HDS_temp_CURRENT_home_PATH"/hdsjiaohuan/"
 
 hdshuangjingbianliangfilepath="$HDS_temp_CURRENT_home_PATH""/.bashrc"
