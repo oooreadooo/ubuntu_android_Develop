@@ -5,7 +5,9 @@
 adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name stop --ei cmd_target 23
 echo "adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name stop --ei cmd_target 23"
 # adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name start --ei cmd_target 1
-rm -rf /home/hds/Desktop/pullfile
-echo "rm -rf /home/hds/Desktop/pullfile"
+rm -rf $HDSHOME/Desktop/pullfile
+echo "rm -rf $HDSHOME/Desktop/pullfile"
 echo "---------------------------------"
-adb pull /sdcard/mtklog/ /home/hds/Desktop/pullfile
+adb pull /sdcard/mtklog/ $HDSHOME/Desktop/pullfile
+
+echo "log已经pull到了:   $HDSHOME/Desktop/pullfile"

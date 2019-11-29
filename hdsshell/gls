@@ -12,10 +12,12 @@ else
 # echo  "git log --stat  --grep $tag -i"
 # git log --stat  --grep $tag -i
 echo  "git log  --grep $tag -i"
+echo "-------------------查询结果如下:"
 git log  --grep $tag -i
+echo "-------------------查询结果如上"
 echo  "git log  后git show commit id查看差异"
+echo  "git show --name-only commitID 查询某一次修改的文件列表"
 fi
-
 
 # 该文件用来查询git log，自动实现忽略大小写
 

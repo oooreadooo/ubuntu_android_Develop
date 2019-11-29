@@ -12,7 +12,8 @@ function myhdscd(){
     source panduan_auto_ss.sh
     #加上pwd，是为了方便复制当前目录路径
     pwd
-    ls --color=always
+    ls  
+    # --color=always
 }
 myhdscd $1
 

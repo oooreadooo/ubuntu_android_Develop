@@ -1,0 +1,70 @@
+#!/bin/bash
+function openvscode(){
+    /usr/bin/code --add $1 &
+}
+function hdsopenvscode(){
+    #echo "test:"$1
+    if [[ "$1" = "" ]];then        
+		oldfilepath=""
+		xsel -o -b > $HDSHOME"/hdsjiaohuan/jianqieban_oo_info.txt"
+        #下一行相当于添加一个回车
+        echo "" >> $HDSHOME"/hdsjiaohuan/jianqieban_oo_info.txt"
+        while read line
+        do
+
+            if [[ "$line" = "" ]];then        
+                # echo "$line"
+                continue
+            fi
+
+            #二进制文件不支持打开
+            strA=$line
+            strB="匹配到二进制文件"
+            #判断是否包含有“：”
+            if [[ $strA =~ $strB ]]            
+            then
+                echo "$line  不支持打开"
+                continue
+            fi
+
+            # echo "    line："$line
+            strA=$line
+            strB=":"
+            #判断是否包含有“：”
+            if [[ $strA =~ $strB ]]            
+            then
+                line=${line%%:*}
+                # echo "    line："$line
+            else
+                # echo "not line："$line
+                echo ""
+            fi
+            #要判断前一行所指向的文件是否相同
+            if [ "$oldfilepath" == "$line" ] ;then
+                oldfilepath=$line
+                #echo "路径:$line   已打开"
+                continue
+            fi
+            # 判断文件是否存在
+            oldfilepath=$line
+            if [ -f "$line" ];then
+                #echo "路径:$line   存在"
+                openvscode $line
+            else
+                # 判断文件夹是否存在    
+                if [ -d "$line" ];then
+                    # echo "路径:$line   存在"
+                    openvscode $line
+                else
+                    echo "路径:$line   不存在"
+                fi
+
+            fi
+
+        done < $HDSHOME"/hdsjiaohuan/jianqieban_oo_info.txt"
+	else
+        openvscode $1
+    fi
+}
+echo "使用方法：如果只输入a，那么获取剪切板中的文字分析来打开文件，把文件或者文件夹添加到vscode中。如果有一个参数，那么参数是文件的路径。将打开文件中的参数"
+hdsopenvscode $1

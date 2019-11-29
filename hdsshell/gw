@@ -1,0 +1,44 @@
+#!/bin/bash
+
+g_tag_filepath=$HDSHOME"/hdsjiaohuan/gtag.txt"
+ff_result=$HDSHOME"/hdsjiaohuan/ff_result.txt"
+houzhuiming=""
+function readhouzhuiming(){
+    for line in $(cat $g_tag_filepath)
+    do
+        houzhuiming=$line
+        # echo "当前默认的查看文件类型是1：$houzhuiming"
+        break
+    done 
+}
+
+function ff_function(){
+    readhouzhuiming
+    if [[ "$1" = "" ]];then     
+        echo "当前默认的查看文件类型是：$houzhuiming"
+        echo "修改默认的文件类型请使用：\"g c 文件后缀名\"命令"
+    else
+        if [[ "$1" = "c" ]];then        
+            rm "$g_tag_filepath"
+            touch "$g_tag_filepath"
+            echo "$2" > "$g_tag_filepath"
+            echo "当前默认的查看文件类型是：$2"
+        else
+            if [[ "$houzhuiming" = "" ]];then    
+                #后缀名为空的时候，那么是查找所有的文件
+                grep --color=always -r -n  "$1"  | tee "$ff_result"    
+                grep_result_to_file.sh
+            else
+                allgrep.sh "hdsgrepw  $houzhuiming $1"
+                grep_result_to_file.sh
+                # echo "test"
+            fi
+        fi
+    fi
+}
+
+ff_function $@
+
+#这个shell的作用选择某一个类型的文件来搜索，为空时是搜索所有的文件
+
+

@@ -1,0 +1,38 @@
+#!/bin/bash
+# mmm vendor/mediatek/proprietary/packages/apps/MtkSettings/
+
+# adb root 
+# sleep 2s
+adb remount
+
+# adb shell rm -rf /system/app/AutoTest
+# adb push out/target/product/a29/system/app/AutoTest /system/app/AutoTest
+# adb push out/target/product/a29/system/priv-app/Settings /system/priv-app/Settings
+# adb push out/target/product/a29/system/app/iFlyIME_v3_1_1369 /system/app/
+# adb push out/target/product/a29/system/app/Gallery2 /system/app/
+# adb push out/target/product/a29/system/app/DeskClock /system/app/
+# adb push D:/hdsbat/test.mp4 /sdcard/DCIM/Camera
+# adb push out/target/product/a29/system/app/SoundRecorder /system/app/
+# adb push out/target/product/a29/system/framework/services.jar /system/framework/
+# adb push out/target/product/a29/system/priv-app/MediaProvider /system/priv-app/
+adb push out/target/product/a29/system/priv-app/Dialer/ /system/priv-app/Dialer
+# adb reboot
+# adb shell am force-stop  com.android.soundrecorder
+# adb push out/target/product/a29/system/vendor/app/FileManager  /system/vendor/app/
+# adb push out/target/product/a29/system/vendor/app/OP01SoundRecorder  /system/vendor/app/
+
+
+# adb shell rm -rf /data/data/com.android.launcher3/databases
+# adb shell rm -rf /system/priv-app/Launcher3
+# adb push out/target/product/a29/system/priv-app/Launcher3/ /system/priv-app/Launcher3
+
+# adb shell pm clear com.android.launcher3
+# adb shell am force-stop com.android.launcher3
+# adb shell am start com.android.launcher3/com.android.launcher3.Launcher
+
+# adb shell am force-stop com.android.settings
+# adb shell am broadcast -a  com.android.kingberry.PHONE_MANAGER
+
+# adb reboot
+# adb push  out/target/product/a29/system/vendor/app/FileManager /system/vendor/app/FileManager
+
